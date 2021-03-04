@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>About</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="#" class="active">About</a>
+    <a href="performance.html">Perfomance</a>
+    <a href="help.html">Help</a>
+  </div>
+
+
+
+  <div class="main">
+    <h2>About</h2>
+    <p>The project includes three models trained on three separate classifers (Random Forest, KNN, and AdaBoost) to
+      predict alpha-helices from sequence data and protein Expasy scales.</p>
+
+    <h3>Feature Engineering</h3>
+
+    The following features were developed from the AA Expasy scales:
+    <ul>
+      <li>Feature blurring with a window of 9 based on average value of the window ('_avg' at the end of the variable
+        name)</li>
+      <li>Feature blurring with a window of 9 based on maximum value of the window ('_max' at the end of the variable
+        name)</li>
+    </ul>
+    I tried normalizing the data, but at the end, it did not change the AUC so it is not included. I also experimented
+    with the size of the window and 9 seems to work the best.
+
+    <h3>Feature Selection</h3>
+
+    Firstly, highly correlated features (>0.8) are removed. Then, the features are selected by Recursive Feature
+    Elimination where we start with the full model and then remove 3 at a time.
+    <br>
+    <br>
+    Currently, there are 20 features in the model. They are listed below ranked by importance (descending order)
+    determined by the Random Forest model:
+    <ol>
+      <li> Coil__Deleage_&amp;_Roux_avg</li>
+      <li>Coil__Deleage_&amp;_Roux_max</li>
+      <li> beta_turn__Deleage_&amp;_Roux_avg</li>
+      <li> Recognition_factors_avg</li>
+      <li>Ratio_hetero_endside_avg</li>
+      <li>beta_sheet__Deleage_&amp;_Roux_avg</li>
+      <li>Average_flexibility_avg</li>
+      <li>AA_composition_max</li>
+      <li>beta_turn__Deleage_&amp;_Roux_max</li>
+      <li>beta_turn__Chou_&amp;_Fasman_max</li>
+      <li>Refractivity_avg</li>
+      <li>beta_sheet__Deleage_&amp;_Roux_max</li>
+      <li>HPLC__retention_pH_74_avg</li>
+      <li>Hphob__Wolfenden_et_al_avg</li>
+      <li>Bulkiness_avg</li>
+      <li>AA_composition_avg</li>
+      <li>Hphob__Black_max</li>
+      <li>Hphob__Welling_&amp;_al_avg</li>
+      <li>Relative_mutability_avg</li>
+      <li>%_accessible_residues_avg</li>
+    </ol>
+
+    <h3>Model: Random Forest</h3>
+
+    Hyperparameter optimization: By using GridSearchCV, the selected parameters are n_estimators=200, max_features =
+    'sqrt', max_depth = 10, bootstrap = True.<br><br>
+
+    This model results in AUC of 0.714 and a 5 fold CV accuracy of 79.4%.
+
+    <h3>Model: KNN</h3>
+
+    Hyperparameter optimization: By using GridSearchCV, the selected number of neighbors to consider is 60.<br><br>
+
+    This model results in AUC of 0.680 and a 5 fold CV accuracy of 77.9%.
+
+    <h3>Model: AdaBoost</h3>
+
+    This classifier uses decision trees as its base classifiers. It fits the data multiple times; each loop focuses more
+    on the previously misclassified parts.<br><br>
+
+    This model results in AUC of 0.713 and a 5 fold CV accuracy of 78.0%.<br><br>
+
+    Read more about performance on the <a href="performance.html">Perfomance page</a>.
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="footer2">
+    <p>Ksenia Zhizhimontova (kvz3)</p>
+  </div>
+
+</body>
+
+</html>
