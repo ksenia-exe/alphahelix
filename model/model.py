@@ -117,32 +117,3 @@ def predict_uniprot_proba(self, UniProt):
     # Make / return prediction probabilities
     return self.predict_proba(X)
 # FUNCTION END
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
