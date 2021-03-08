@@ -23,7 +23,7 @@ model = form.getfirst('Model', 0)
 print ('''
 <html>
 <head>
-<title>BTRY 4381</title>
+<title>Pred</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -69,7 +69,7 @@ def print_table(arr):
           </div>
 
             <div class="footer2">
-              <p>BTRY 4381 FA2020 - Ksenia Zhizhimontova (kvz3)</p>
+              <p>Ksenia Zhizhimontova (kvz3)</p>
             </div>
                 </body>
             </html>''') 
@@ -91,7 +91,7 @@ except:
           </div>
 
             <div class="footer">
-              <p>BTRY 4381 FA2020 - Ksenia Zhizhimontova (kvz3)</p>
+              <p>Ksenia Zhizhimontova (kvz3)</p>
             </div>
                 </body>
             </html>''') 
